@@ -1,0 +1,7 @@
+# This expresses a position and orientation on a 2D manifold.
+
+float64 x
+float64 y
+string motion
+---
+int8 result
