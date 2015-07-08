@@ -6,7 +6,7 @@
 import sys
 import rospy
 
-from arm_move.srv import *
+from arm_move_pkg.srv import *
 
 def arm_move_client(num,angle,moiton):
     rospy.wait_for_service('arm_move')

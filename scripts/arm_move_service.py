@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from arm_move.srv import *
+from arm_move_pkg.srv import *
 import rospy
 import sys
 

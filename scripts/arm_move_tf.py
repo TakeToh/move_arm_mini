@@ -5,7 +5,7 @@ import sys
 import rospy
 import math
 
-from arm_move.srv import *
+from arm_move_pkg.srv import *
 
 # from x,y transform servo's num & angle
 
