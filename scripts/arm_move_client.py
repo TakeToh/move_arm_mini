@@ -45,9 +45,9 @@ if __name__ == "__main__":
         motion = "free"
 
         if arm_move_client(num, angle,motion) == 1:
-            print "service process clear"
+            print "service process clear\n"
         else:
-            print "service process out"
+            print "service process out\n"
 
     elif arm_move_client(num, angle,motion) == 1:
         print "service process clear"

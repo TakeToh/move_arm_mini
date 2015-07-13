@@ -41,6 +41,7 @@ def handle_arm_move(req):
             print 'current angle2:%d' %servo.getAngle(num2)
 
             time.sleep(2) # しばし待つ
+            return ServoResponse(1)
 
         #single servo action
         else:
@@ -58,6 +59,7 @@ def handle_arm_move(req):
             time.sleep(2) # しばし待つ
 
             print 'current angle:%d' %servo.getAngle(req.num)
+            return ServoResponse(1)
           
     elif req.motion == "free":
         for i in range(1,10):
@@ -66,7 +68,7 @@ def handle_arm_move(req):
             servo.torque(i, 0)  
         
         print "servo free mode complete"
-
+        return ServoResponse(1)
     elif req.motion == "open":
 
         print'ID%d Torqu on' %req.num
@@ -85,9 +87,6 @@ def handle_arm_move(req):
         print 'current angle:%d' %servo.getAngle(req.num)
 
         return ServoResponse(1)
-
-    print "motion end"
-    
 
 def arm_move_server():
     rospy.init_node('arm_move_server')
