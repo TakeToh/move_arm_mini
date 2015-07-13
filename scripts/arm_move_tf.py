@@ -24,11 +24,72 @@ def arm_move_client(num,angle,motion):
 #callback
 def handle_arm_pose(req):
 #	print "Requesting pose.x=%f pose.y=%f motion=%s" %(req.x, req.y, req.motion)
+	motion = req.motion
+##########################################################
+###		E S P E C I A R Y   M O T I O N
+##########################################################
+	if motion == "open":
+		#hand open
+		num = 9
+		angle = 200
 
+		if arm_move_client(num, angle,motion)==1:
+			print "service process clear"
+		else:
+			print "service process out"
+			sys.exit(1)
+	elif motion == "free":
+
+	# Move to Fast Position
+		num = 9
+		angle = 200
+		motion = "catch"
+
+		if arm_move_client(num, angle,motion)==1:
+			print "service process clear"
+		else:
+			print "service process out"
+			sys.exit(1)
+
+		num = 7
+		angle = 900
+		motion = "catch"
+
+		if arm_move_client(num, angle,motion)==1:
+			print "service process clear"
+		else:
+			print "service process out"
+			sys.exit(1)
+
+		num = 53
+		angle = -900
+		motion = "catch"
+
+		if arm_move_client(num, angle,motion)==1:
+			print "service process clear"
+		else:
+			print "service process out"
+			sys.exit(1)
+
+	# END Moving Fast position
+
+	# All Servo motor changed free mode
+		num = 999
+		angle = 999
+		motion = "free"
+
+		if arm_move_client(num, angle,motion)==1:
+			print "service process clear"
+		else:
+			print "service process out"
+			sys.exit(1)
+
+
+##########################################################
+###		N O M A L  C A T C H M O D E
+##########################################################
 	x = req.x
 	y = req.y
-	motion = req.motion
-
 	length = math.pow( x*x+y*y ,0.5)
 
 	if length < 350:
@@ -73,63 +134,9 @@ def handle_arm_pose(req):
 			print "service process out"	
 			sys.exit(1)
 
-
-		#hand open
-		num = 9
-		angle = 200
-
-		if arm_move_client(num, angle,motion)==1:
-			print "service process clear"
-		else:
-			print "service process out"
-			sys.exit(1)
-
-
-		#hand close
+	#hand close
 		num = 9
 		angle = -200
-
-		if arm_move_client(num, angle,motion)==1:
-			print "service process clear"
-		else:
-			print "service process out"
-			sys.exit(1)
-
-	elif motion == "free":
-
-		num = 9
-		angle = 200
-		motion = "catch"
-
-		if arm_move_client(num, angle,motion)==1:
-			print "service process clear"
-		else:
-			print "service process out"
-			sys.exit(1)
-
-		num = 7
-		angle = 900
-		motion = "catch"
-
-		if arm_move_client(num, angle,motion)==1:
-			print "service process clear"
-		else:
-			print "service process out"
-			sys.exit(1)
-
-		num = 53
-		angle = -900
-		motion = "catch"
-
-		if arm_move_client(num, angle,motion)==1:
-			print "service process clear"
-		else:
-			print "service process out"
-			sys.exit(1)
-
-		num = 999
-		angle = 999
-		motion = "free"
 
 		if arm_move_client(num, angle,motion)==1:
 			print "service process clear"
